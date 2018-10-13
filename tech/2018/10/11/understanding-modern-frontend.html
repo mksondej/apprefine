@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <!-- JQuery (used for bootstrap and jekyll search) -->
+    <script src="/assets/js/jquery-3.2.1.min.js" ></script>
+    
+    <!-- Main JS (navbar.js and katex_init.js)-->
+    <script defer=true src="/assets/js/main.min.js"></script>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!--Favicon-->
+    <link rel="shortcut icon" href="/" type="image/x-icon">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://apprefine.net/tech/2018/10/11/understanding-modern-frontend.html">
+
+    <!-- RSS -->
+    <link rel="alternate" type="application/atom+xml" title="APPREFINE.NET | <small>by Michael K. Sondej</small>" href="https://apprefine.net///feed.xml"/>
+
+    <!-- Font Awesome -->
+    <!-- <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/font-awesome.min.css">
+
+    <!-- Google Fonts -->
+    
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,700italic,400italic" rel="stylesheet" type="text/css"> 
+    
+
+    <!-- KaTeX 0.8.3 -->
+    
+
+    <!-- Google Analytics -->
+    
+    <script>
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-126623825-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+    
+    
+    <!-- seo tags -->
+    <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Understanding modern front-end stack | Apprefine.net</title>
+<meta name="generator" content="Jekyll v3.8.4" />
+<meta property="og:title" content="Understanding modern front-end stack" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A couple of years ago there was a huge leap in the way how front-end part of web apps is developed. We went from small helper JS libraries downloaded directly from the Internet to extensive frameworks managed through a plethora of additional tools. At first everything was changing fast, way too fast. But, thankfully, things have settled down and matured immensely. In this article I will attempt to shed some light on the core concepts of every modern front-end solution." />
+<meta property="og:description" content="A couple of years ago there was a huge leap in the way how front-end part of web apps is developed. We went from small helper JS libraries downloaded directly from the Internet to extensive frameworks managed through a plethora of additional tools. At first everything was changing fast, way too fast. But, thankfully, things have settled down and matured immensely. In this article I will attempt to shed some light on the core concepts of every modern front-end solution." />
+<link rel="canonical" href="https://apprefine.net/tech/2018/10/11/understanding-modern-frontend.html" />
+<meta property="og:url" content="https://apprefine.net/tech/2018/10/11/understanding-modern-frontend.html" />
+<meta property="og:site_name" content="Apprefine.net" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-10-11T08:00:00+00:00" />
+<script type="application/ld+json">
+{"description":"A couple of years ago there was a huge leap in the way how front-end part of web apps is developed. We went from small helper JS libraries downloaded directly from the Internet to extensive frameworks managed through a plethora of additional tools. At first everything was changing fast, way too fast. But, thankfully, things have settled down and matured immensely. In this article I will attempt to shed some light on the core concepts of every modern front-end solution.","@type":"BlogPosting","url":"https://apprefine.net/tech/2018/10/11/understanding-modern-frontend.html","headline":"Understanding modern front-end stack","dateModified":"2018-10-11T08:00:00+00:00","datePublished":"2018-10-11T08:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://apprefine.net/tech/2018/10/11/understanding-modern-frontend.html"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <!-- Manual seo tags -->
+    <!--
+    <title>Understanding modern front-end stack | APPREFINE.NET | <small>by Michael K. Sondej</small></title>
+    <meta name="description" content="A couple of years ago there was a huge leap in the way how front-end part of web apps is developed. We went from small helper JS libraries downloaded directl...">
+    -->
+</head>
+
+  <body>
+    <header class="site-header">
+    
+    <!-- Logo and title -->
+	<div class="branding">
+        
+
+		<h1 class="site-title">
+			<a href="/">APPREFINE.NET | <small>by Michael K. Sondej</small></a>
+		</h1>
+	</div>
+    
+    <!-- Toggle menu -->
+    <nav class="clear">
+    <a id="pull" class="toggle" href="#">
+    <i class="fa fa-bars fa-lg"></i>
+    </a>
+    
+    <!-- Menu -->
+    <ul>
+        
+        
+        
+        
+        
+        
+        
+        
+        <li>
+            <a class="clear" href="/index.html">
+                All
+            </a>
+        </li>
+        
+        
+        
+        <li>
+            <a class="clear" href="/lifestyle/index.html">
+                Lifestyle
+            </a>
+        </li>
+        
+        
+        
+        <li>
+            <a class="clear" href="/tech/index.html">
+                Tech
+            </a>
+        </li>
+        
+        
+        
+         
+        <li class="separator"></li>
+        
+        
+        
+        
+        <li>
+            <a class="clear" href="/about/">
+                About
+            </a>
+        </li>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+         
+        
+        
+        
+        
+        
+    </ul>
+        
+	</nav>
+</header>
+
+    <div class="content">
+      <article class="feature-image">
+  <header id="main" style="background-image: url('/assets/img/pexels/triangular.jpeg')">
+    <h1 id="Understanding+modern+front-end+stack" class="title">Understanding modern front-end stack</h1>
+    <p class="meta">
+    October 11, 2018
+    
+    </p>
+  </header>
+  <section class="post-content"><p>A couple of years ago there was a huge leap in the way how front-end part of web apps is developed. We went from small helper JS libraries downloaded directly from the Internet to extensive frameworks managed through a plethora of additional tools. At first everything was changing fast, way too fast. But, thankfully, things have settled down and matured immensely. In this article I will attempt to shed some light on the core concepts of every modern front-end solution.</p>
+
+<h2 id="1-the-package-manager">1. The package manager</h2>
+
+<h3 id="the-problem">The problem</h3>
+
+<p>During the stone age of front-end development we didn’t have large libraries. And not because of some arbitrary technical limitations. It stemmed rather from the fact that managing large codebases was something of a nightmare for both the author and the user. Why?</p>
+
+<p>First of all - <strong>dependencies</strong>. You can’t import/include JS in other JS dynamically (not in pure JS at least). The way it typically works is that either the user downloads and includes all of the dependencies in correct versions and order on his page or you concatenate everything to a single file and distribute it in such form. This is all fine and dandy - but only up to a point. Also, both solutions are not really viable when you want to use multiple libraries with the same dependencies.</p>
+
+<p>Now, what about <strong>updating</strong>? If there’s an update available in the main library, you have to stalk its website (considering you remembered all of them in the first place) for the updated files and then swap them manually. And what happens when there is an update to the dependency? If it’s not bundled - even more websites for you to stalk, if it is - you still have to wait for the author of the library to do that. Inconvenient? A bit.</p>
+
+<p>Finally, there is the problem of <strong>wasted space</strong>. You clutter your repository with code that isn’t yours and since it is most probably going to get modified in the future a lot, it will obfuscate your entire commit history as well. And what if the dependencies of your libraries change over time, rendering some of the files no longer needed? Obviously, it would be better if everything external stayed… well… external.</p>
+
+<h3 id="the-solution">The solution</h3>
+
+<p>So the big question is: how do we get out of all this mess? Quite simply - by doing what everyone else had been doing for a long time, that is introducing a package manager. It is a tool which uses the globally available repository of libraries and knows how to download and update them along with their dependencies.</p>
+
+<p>In the front-end world the package manager and the global repository are called <strong>NPM</strong>. It is “similar” to NuGet from .NET, Maven from Java, PIP from Python, Composer from PHP, etc.</p>
+
+<p>This tool reads or modifies <code class="highlighter-rouge">package.json</code> - a file which should be located in your project’s folder - and describes your dependencies, downloading all of the required stuff to the local folder: <code class="highlighter-rouge">node_modules</code>.
+That’s it really. You can import the files from this folder and call it a day.</p>
+
+<p>However, that’s not all that can be done to make your life even better. Read on :)</p>
+
+<h2 id="2-the-module-bundler">2. The module bundler</h2>
+
+<h3 id="the-problem-1">The problem</h3>
+
+<p>Pure JavaScript does not have modules or even namespaces. You can isolate private stuff in a single file using <a href="https://developer.mozilla.org/en-US/docs/Glossary/IIFE">IIFEs</a>, but if you want to share something across multiple files - you have to <strong>pollute the global namespace</strong>. What if another thing in your application wants to add something else to that very namespace with the same name? Whichever JS file is included later on, it will simply override what was already in the globals, leading to an undefined behavior.</p>
+
+<p>The other problem, which is present especially in libraries, is that <strong>not all shared stuff may be used by the end application</strong>. For example, you have a library with 100 components and the user needs only 1 of them. You may split your library into multiple small files and the user may include only them, but what if those files use 12 out of 125 functions from your library’s internal dependency? What about the next levels, even deeper in the hierarchy? Obviously, it’s impossible to manage manually.</p>
+
+<p>Also, in libraries with multiple dependencies, how do we know <strong>the correct order</strong> in which the user should load them? Do we really want to tell the user: “Hey, here’s our 144 files, this is the order”? I’m gonna say nope.</p>
+
+<h3 id="the-solution-1">The solution</h3>
+
+<p>All of these problems are solved by module bundlers. There are a few of them, but the most important one is definitely <a href="https://webpack.js.org/">Webpack</a>. So, what is it exactly?</p>
+
+<p>This is a both run-time and build-time tool which:</p>
+
+<h4 id="gives-you-syntax-to-define-a-module-and-its-public-api">Gives you syntax to define a module and its public API</h4>
+
+<p>See <code class="highlighter-rouge">export</code> below:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">privateFunction</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/*...*/</span> <span class="p">}</span>
+<span class="k">export</span> <span class="kd">function</span> <span class="nx">publicFunction</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/*...*/</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<p>This function can now be dynamically imported from your file. Also, nothing from this file is added to the global namespace!</p>
+
+<h4 id="gives-you-syntax-to-dynamically-import-stuff-from-other-modules">Gives you syntax to dynamically import stuff from other modules:</h4>
+
+<p>See <code class="highlighter-rouge">import</code>s below (assume both myModule1 and myModule2 contain example code from above):</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">EntireFile</span> <span class="k">from</span> <span class="s2">"./myModule1.js"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">publicFunction</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">"./myModule2.js"</span><span class="p">;</span>
+
+<span class="nx">EntireFile</span><span class="p">.</span><span class="nx">publicFunction</span><span class="p">();</span>
+<span class="nx">publicFunction</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>Those are in JS! No more manual script loading in HTML.</p>
+
+<h4 id="keeps-track-of-what-exactly-you-need-from-the-modules">Keeps track of what exactly you need from the modules</h4>
+
+<p>Module bundler looks at each import recursively (so also at things deep in libraries) and figures out which files you need. When you build your application using Webpack, unused code won’t go into the finished bundle.</p>
+
+<h4 id="ensures-that-every-imported-module-is-loaded-once-and-once-only">Ensures that every imported module is loaded once and once only</h4>
+
+<p>The final bundle will contain only one instance of your module, even if two files import different things from that module.</p>
+
+<h4 id="gives-you-tools-to-bundle-your-final-applications-js-to-a-small-number-of-files-often-just-one">Gives you tools to bundle your final application’s JS to a small number of files (often just one)</h4>
+
+<p>With a single command it can get everything you need, throw out what you don’t need, correctly wrap every file so that it doesn’t pollute the global namespace and concatenate it to a single JS file which you add to your HTML.</p>
+
+<p>Summing up, module bundler solves most of your problems, but that is still not the end of its magic. Read on :)</p>
+
+<h2 id="3-transpilers-and-loaders">3. Transpilers and loaders</h2>
+
+<h3 id="the-problem-2">The problem</h3>
+
+<p>JavaScript is currently the only scripting language which is native to every browser. However, many people new to the front-end world do not realize that JavaScript, like any other programming language, has many standards and browsers lag multiple versions behind the current one.</p>
+
+<p>Moreover, there are other languages in which you can write web apps, but they all have to transform down to regular JS. How do we achieve that?</p>
+
+<p>Finally, thanks to Webpack, we solved the problem of managing dependencies between JS files, but what about CSS and other files, like images or fonts?</p>
+
+<h3 id="the-solution-2">The solution</h3>
+
+<p>Since module bundler is the thing which interprets your imports/exports and in build-time loads your files into the bundle, it can simultaneously perform some transformations to your code. Actually, it always does that by default because <code class="highlighter-rouge">import</code> and <code class="highlighter-rouge">export</code> are not part of ES5 JavaScript standard which is supported by browsers and it has to replace it with some runtime function calls.</p>
+
+<p>So, what kind of transformations are we talking about? First of all, <strong>transpilation</strong> - a process of “translating” code of one language to another. For example, we can use newer standards of JavaScript (e.g. ES7) or even completely different languages (TypeScript, CoffeeScript, ELM) and transpile them down to ES5 for browsers. Cool, right? Moreover, you can even use those different languages simultaneously, which is useful when you’re migrating legacy codebases.</p>
+
+<p>We set up transformations for different file extensions in Webpack configuration using <strong>loaders</strong> which are simply 3rd party functions dedicated to Webpack. In the config it looks more or less like this:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nl">rules</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">jsx</span><span class="se">?</span><span class="sr">$/</span><span class="p">,</span> 
+            <span class="na">exclude</span><span class="p">:</span> <span class="sr">/node_modules/</span><span class="p">,</span> 
+            <span class="na">use</span><span class="p">:</span> <span class="p">[{</span> <span class="na">loader</span><span class="p">:</span> <span class="s1">'babel-loader'</span> <span class="p">}]</span>
+            <span class="c1">//...</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>So for all <code class="highlighter-rouge">.jsx</code> files everywhere except <code class="highlighter-rouge">node_modules</code>, the folder will be transformed with <code class="highlighter-rouge">babel-loader</code>. Babel is a transpiler of newer standards of JS.
+Of course the transformations will be run only for files which are imported somewhere in your app.</p>
+
+<p>What about that “CSS and other files” problem? Well, there are loaders for these too:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="p">{</span>
+        <span class="nl">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.(</span><span class="sr">jpe</span><span class="se">?</span><span class="sr">g|png|gif</span><span class="se">)</span><span class="sr">$/i</span><span class="p">,</span> 
+        <span class="nx">use</span><span class="p">:</span> <span class="p">[{</span>
+            <span class="na">loader</span><span class="p">:</span> <span class="s1">'file-loader'</span><span class="p">,</span>
+
+            <span class="na">options</span><span class="p">:</span> <span class="p">{</span>
+                <span class="na">name</span><span class="p">:</span> <span class="s1">'[name].[ext]'</span>
+            <span class="p">}</span>
+        <span class="p">}]</span>
+    <span class="p">},</span>
+
+</code></pre></div></div>
+
+<p>Remember that Webpack uses loaders only for imported files? So, how do we import non-JS files? It turns out, that like basically everything else, you can import those from your JS:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">pathToLogo</span> <span class="k">from</span> <span class="s2">"./pathToLogo.png"</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>And the <code class="highlighter-rouge">file-loader</code> will:</p>
+<ul>
+  <li>grab the file from the imported folder and put it into the bundle’s folder</li>
+  <li>assign the resulting path to the image to the <code class="highlighter-rouge">pathToLogo</code> variable.</li>
+</ul>
+
+<p>Which solves all our problems mentioned before.</p>
+
+<h2 id="4-minification-and-optimization">4. Minification and optimization</h2>
+
+<h3 id="the-problem-3">The problem</h3>
+
+<p>JavaScript goes to the browser in a raw text-based format, but a large portion of scripts’ contents doesn’t have any meaning to the browser at all. For example, all indentations, tabs, empty lines and even spaces are completely unnecessary. They help only you - the developer. The same goes for variables or function names - as long as they’re unique in their scope, they can be as short as a single character. So, it would be great if some automagic optimized that for us and through this allowed us to save bandwidth, wouldn’t it?</p>
+
+<p>Also, the other common problem is the number of files. The more separate files you have, the more requests the browser will have to make, significantly increasing load times of your application. However, a single file sometimes may not be optimal as well, because, for instance, different routes in the app use different modules (e.g. “public” part and the back office for admins). Also, if some of the files don’t change often (like external libraries), browsers of your users could cache them.</p>
+
+<h3 id="the-solution-3">The solution</h3>
+
+<p>Like before, the problem is handled through the module bundler. You can simply configure how the code should be minified in the config. You can also set up sophisticated rules on how it should be split. For example, you can define that everything from <code class="highlighter-rouge">node_modules</code> (so pretty much all external libraries) will go to a separate file, which, as I mentioned before, will be cached by browsers because that will not change often.</p>
+
+<h2 id="5-summary">5. Summary</h2>
+
+<p>Every concept described in this article applies to every modern front-end tech like Angular 2+, React, Vue, Ember, etc. Even if some of these frameworks have their own CLI, they all use these things under the hood. You also can now take advantage of your newly gained knowledge and apply some of these tools to a legacy codebase as it will work even with Angular 1.x.</p>
+
+<p>Hopefully, this article helped you better understand how the modern front-end works and that there are reasons why it has to be that way.</p>
+
+<p>Let me know your thoughts in the discussion below, and if you know any other lifehacks to make developers’ work easier, you can share them too. See you next time! :)</p>
+</section>
+   
+   <!-- Tag list -->
+  
+  
+
+
+    <footer>
+        <div class="tag-list">
+        
+          <div class="meta">Tags</div>
+        
+            
+        
+          <a class="button" href="/tags#Frontend">
+            <p><i class="fa fa-tag fa-fw"></i> Frontend</p>
+          </a>
+        
+          <a class="button" href="/tags#Programming">
+            <p><i class="fa fa-tag fa-fw"></i> Programming</p>
+          </a>
+        
+        </div>
+    </footer>
+  
+
+    
+</article>
+
+<!-- Disqus -->
+
+<div class="comments">
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+	var disqus_shortname = 'apprefine-net';
+	(function() {
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+<noscript>Please enable JavaScript to view comments.</noscript>
+
+</div>
+
+
+<!-- Post navigation -->
+
+  <div id="post-nav">
+  
+  <div id="previous-post" class="post-nav-post">
+      <p>Previous post</p>
+      <a href="/lifestyle/2018/10/11/hi-there.html">
+        Hi there!
+      </a>
+  </div>
+  
+  
+</div>
+
+    </div>
+    
+<footer class="site-footer">
+    <p class="text">&copy; 2018 by Michał Karol Sondej<br/> Powered by <a href="https://jekyllrb.com/">Jekyll</a>.
+</p>
+            <div class="footer-icons">
+                <ul>
+                <!-- Social icons from Font Awesome, if enabled -->
+                
+<li>
+	<a href="https://apprefine.net////feed.xml" title="Follow RSS feed">
+		<span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+        </span>
+	</a>
+</li>
+
+
+
+<li>
+	<a href="mailto:apprefine@outlook.com" title="Email">
+		<span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+        </span>
+	</a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li>
+	<a href="https://www.linkedin.com/in/micha%C5%82-sondej-9b6a17a5/" title="Follow on LinkedIn">
+		<span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+        </span>
+	</a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </ul>
+            </div>
+</footer>
+
+
+
+
+  </body>
+</html>
